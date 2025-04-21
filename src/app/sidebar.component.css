@@ -1,0 +1,144 @@
+/* Sidebar */
+.sidebar-container{
+    margin-left: 4em;
+    width: 400px;
+    height: 100%;
+    background-color: var(--color-background);
+    border-right: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+    text-align: center;
+}
+.sidebar-container.hiding{
+    animation: 0.35s 1 normal both hide-sidebar;
+}
+.sidebar-container.show{
+    animation: 0.35s 1 reverse both hide-sidebar;
+}
+.sidebar-container.show .sidebar-content{
+    opacity: 0;
+    animation: 0.1s 1 normal both show-sidebar-content 0.25s;
+}
+.sidebar-title{
+    font-size: 2em;
+    padding-top: 0.25em;
+    text-align: center;
+}
+.currentPath{
+    color: var(--color-primary);
+    width: 100%;
+    height: 30px;
+    margin: 0px;
+    border-bottom: 1px solid var(--color-accent)
+}
+/* Button Container - Sidebar */
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5em;
+}
+#prevDirButton, #trashButton{
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+/* Notes */
+.notes-container{
+    margin-top: 3em;
+    height: 80%;
+}
+.notes-container ul{
+    text-align: start;
+    padding-inline-start: 0;
+    margin: 0px;
+}
+.notes-container li{
+    color: var(--color-accent);
+    list-style: none;
+    padding-left: 2em;
+}
+.file{
+    color: var(--color-accent);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 25px;
+    width: 100%;
+    font-size: 1em;
+    margin-top: 0.25em;
+}
+.file:hover{
+    color: var(--color-primary);
+    background-color: #2F3132;
+}
+.file:active{
+    background-color: var(--color-background-light);
+}
+.abducted{
+    background-color: #FB4834;
+}
+
+.fileElementInput{
+    font-size: 1em;
+    height: 25px;
+    margin-top: 4px;
+    margin-left: 19px;
+    background-color: transparent;
+    color: var(--color-primary);
+    width: calc(100% - 22px);
+    border: none;
+    outline: none;
+}
+.fileElementInput:focus-visible{
+    outline: none !important;
+}
+
+.fileElementInputWrapper:hover{
+    background-color: #2F3132;
+}
+.fileElementInput:focus-visible{
+    border: 0.25px solid var(--color-accent);
+    border-radius: 0.25em;
+}
+.fileElementInputWrapper:has(.fileElementInput:focus-visible){
+    background-color: #2F3132;
+}
+
+
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+/* Animations - Sidebar */
+@keyframes hide-sidebar {
+    0% {
+        width: 400px
+    }
+
+    100%{
+        width: 0px;
+        border: none;
+    }
+}
+@keyframes show-sidebar-content {
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1
+    }
+}
+@keyframes hide-sidebar-content {
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1;
+        display: none;
+    }
+}
+

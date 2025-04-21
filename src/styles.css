@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+:root{
+    --color-primary: #FCE566;
+    --color-primary-dark1: #F8E16E;
+    --color-primary-dark2: #E9D584;
+    --color-accent: #D5C4A1;
+    --color-accent-light: #A79B81;
+    --color-accent-dark: #797261;
+    --color-accent-dark2: #4B4941;
+    --color-background-lighter: #333333;
+    --color-background-light: #282828;
+    --color-background: #1D2021;
+    --color-border: #3C3836;
+
+
+    --t1-size: 1.802em;
+    --t2-size: 1.602em;
+    --t3-size: 1.424em;
+    --t4-size: 1.266em;
+    --t5-size: 1.125em;
+    --t6-size: 1em;
+
+
+    --t1-line-height: 1.2;
+    --t2-line-height: 1.2;
+    --t3-line-height: 1.3;
+    --t4-line-height: 1.4;
+    --t5-line-height: 1.5;
+    --t6-line-height: 1.5;
+}
+*{
+    user-select: none;
+}
+*:focus-visible{
+    outline: none;
+}
+body, html{
+    height: 100%;
+    margin: 0px;
+}
+h1, h2, h3, p{
+    margin: 0px;
+
+}
+button{
+    appearance: none;
+    border: none;
+    background-color: transparent;
+}
+button.icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25em 0.75em 0.25em 0.75em;
+
+}
+button.icon:hover:not(:disabled){
+    background-color: #2E3132;
+    border-radius: 0.5em;
+}
+button.icon:hover:not(:disabled) path{
+    stroke: #F7E065
+}
+button:disabled{
+    pointer-events: none;
+    background-color: transparent;
+}
+
+button:disabled svg path{
+    stroke: hsl(40, 38%, 83%, 50%);
+}
+
+svg{
+    pointer-events: none;
+}
+
+
+.primaryText{
+    color: #FCE566;
+}
+.quicksand-300 {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+.quicksand-500 {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+.quicksand-700 {
+font-family: "Quicksand", sans-serif;
+font-optical-sizing: auto;
+font-weight: 700;
+font-style: normal;
+}
+#fileExplorer.n{
+    pointer-events: none;
+}

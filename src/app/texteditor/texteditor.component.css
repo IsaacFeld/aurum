@@ -1,0 +1,104 @@
+.EditorContainer{
+    width: calc(100% - 10em - 2px);
+    padding: 3em 5em;
+    height: calc(100% - 6em);
+    color: var(--color-primary);
+    border-left: 2px solid var(--color-accent-dark);
+    overflow: scroll;
+}
+.im-line{   
+    max-width: 80%;
+    color: var(--color-accent);
+    padding: 2px;
+    min-height: calc(1.25em + 4px);
+    word-break: break-word;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.im-line span{
+    white-space: pre;
+}
+.im-line.active .subline:last-child{
+    animation: 1s infinite typewriter;
+    border-right: 1px solid var(--color-accent);
+}
+.subline.normal{
+    min-height: 24px;
+    line-height: 1.5;
+}
+.subline.bold{
+    font-weight: 700;
+}
+.subline.title-1{
+    color: var(--color-primary);
+    display: block;
+    font-size: var(--t1-size);
+    line-height: var(--t1-line-height);
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    font-weight: 700;
+}
+.subline.title-2{
+    color: #2D936C;
+    display: block;
+    font-size: var(--t2-size);
+    line-height: var(--t2-line-height);
+    margin: 0px;
+    margin-top: 16px;
+    font-weight: 600;
+
+}
+.subline.title-3 { 
+    color: #5FAD41;
+    display: block;
+    font-size: var(--t3-size);
+    line-height: var(--t3-line-height);
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    font-weight: 600;
+}
+.subline.title-4 { 
+    color: #A5C882;
+    display: block;
+    font-size: var(--t4-size);
+    line-height: var(--t4-line-height);
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    font-weight: 600;
+}
+.subline.title-5 { 
+    color: #5AB1BB;
+    display: block;
+    font-size: var(--t5-size);
+    line-height: var(--t5-line-height);
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    font-weight: 600;
+}
+.subline.title-6 { 
+    color: #A2D6F9;
+    display: block;
+    font-size: var(--t6-size);
+    line-height: var(--t6-line-height);
+    margin: 0px;
+    padding: 0px;
+    margin-top: 16px;
+    font-weight: 600;
+}
+
+.im-line.active{
+    background-color: var(--color-background-lighter);
+}
+
+@keyframes typewriter{
+    50%{
+        border-right: none;
+    }
+}
+

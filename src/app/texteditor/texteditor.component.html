@@ -1,0 +1,11 @@
+<div class="EditorContainer">
+    @for(line of renderedHTML; track line.id){
+            <div class="im-line {{line.active ? 'active': ''}}">
+                @for(subline of line.children; track subline.id){
+                    <span  class="subline {{subline.type}} {{subline.active ? 'active' : ''}}">{{subline.text}}</span>
+                }
+               
+            </div>
+    
+    }
+</div>
