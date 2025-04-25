@@ -1,5 +1,6 @@
 import { FileElement } from "../data-structures/FileElement";
 
+
 export class FileService {
     constructor(fileMap: Map<string, FileElement>) {
         this.fileMap = fileMap
@@ -9,22 +10,35 @@ export class FileService {
     add(fileElement: FileElement){
         fileElement.path = this.currentPath
         this.fileMap.set(fileElement.id, fileElement)
+        if(fileElement.isFolder){
+            window.electronAPI.addFolder(this.currentPath, fileElement.id)
+        }
+        else{
+            window.electronAPI.addFile(this.currentPath, fileElement.id)
+        }
+        window.electronAPI.setFilemap(this.fileMap)
     }
     delete(id: string){
         if(!this.fileMap.get(id)!.isFolder){
             this.fileMap.delete(id)
+            window.electronAPI.removeFile(this.currentPath, id)
         }
         else{
             this.fileMap.forEach((fileElement) =>{
-                if(fileElement.path.includes(id)){
-                    this.fileMap.delete(fileElement.id)
+                if(fileElement.path != null){
+                    if(fileElement.path.includes(id)){
+                        this.fileMap.delete(fileElement.id)
+                    }
                 }
             })
             this.fileMap.delete(id)
+            window.electronAPI.removeFolder(this.currentPath, id)
         }
+        window.electronAPI.setFilemap(this.fileMap)
     }
     clear(){
         this.fileMap.clear()
+        window.electronAPI.setFilemap(new Map<string, FileElement>())
     }
     updateFolder(folderId: string){
         let results = new Array()
@@ -37,15 +51,21 @@ export class FileService {
     }
     rename(id: string, newName: string){
         this.fileMap.get(id)!.name = newName;
+        window.electronAPI.setFilemap(this.fileMap)
     }
     queryFolder(folderId: string){
+        console.log(folderId)
             let results = new Array()
             this.fileMap.forEach(function(fileElement) {
+                console.log(folderId)
+                console.log(fileElement.parentId)
                 if(fileElement.parentId == folderId && fileElement.id != folderId){
                     results.push(fileElement)
                 }
             })
-            this.currentPath += `${this.fileMap.get(folderId)!.id}/`
+            if(folderId != 'root'){
+                this.currentPath += `${this.fileMap.get(folderId)!.id}/`
+            }
             return results
     }
     return(activeFileElement: FileElement){

@@ -14,4 +14,4 @@ export class LineElement{
     text: string;
     children: Array<SublineElement>;
     type: string;
-}   
+}  

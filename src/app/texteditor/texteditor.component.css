@@ -4,7 +4,7 @@
     height: calc(100% - 6em);
     color: var(--color-primary);
     border-left: 2px solid var(--color-accent-dark);
-    overflow: scroll;
+    overflow: auto;
 }
 .im-line{   
     max-width: 80%;

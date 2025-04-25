@@ -75,6 +75,10 @@
 .file:active{
     background-color: var(--color-background-light);
 }
+.file.active{
+    background-color: #2F3132;
+    color: var(--color-primary)
+}
 .abducted{
     background-color: #FB4834;
 }

@@ -98,6 +98,11 @@ font-optical-sizing: auto;
 font-weight: 700;
 font-style: normal;
 }
-#fileExplorer.n{
-    pointer-events: none;
+
+
+#fileEditor.disabled .im-line.active .subline:last-child{
+    animation: none;
+}
+#fileEditor.disabled .im-line.active{
+    background-color: transparent;
 }

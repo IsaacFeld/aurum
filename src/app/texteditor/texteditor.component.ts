@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LineElement } from '../data-structures/LineElement';
 import { SublineElement } from '../data-structures/SublineElement';
+
+
+
 
 @Component({
   selector: 'app-texteditor',
@@ -9,27 +12,37 @@ import { SublineElement } from '../data-structures/SublineElement';
   styleUrl: './texteditor.component.css'
 })
 export class TexteditorComponent {
-  markdownString = new Array();
-  currentLineText: string = '';
-  currentSublineText: string = '';
-  activeIndex = 0;
-  activeChildIndex = 0;
-  boldState = false;
-  titleState = false;
-  renderedHTML: LineElement[] = []; // array of LineElements will be used to render HTML / save data
+  @Input()  markdownStringInput: Array<String>;
+  @Input()  renderedHTMLInput :LineElement[];
+  @Input()  activeChildIndexInput: number;
+  @Input()  activeIndexInput: number;
+  @Input()  titleStateInput: boolean
+  @Input()  boldStateInput: boolean
+
+  @Output() saveStateEvent = new EventEmitter<Object>
+  markdownString: Array<String>
+  renderedHTML: LineElement[] = [];
+  activeIndex: number = 0
+  activeChildIndex: number = 0
+  boldState: boolean = false
+  titleState: boolean = false
 
   ngOnInit(){
-    this.markdownString[this.activeIndex] = null;
+    document.addEventListener('click', (event: any) =>{
+      console.log(event.target.classList)
+      if(event.target.classList.contains('file') && event.target.classList.contains('active')){
+        this.saveStateEvent.emit({saveIndex: this.activeIndex, saveChildIndex: this.activeChildIndex, title: this.titleState, bold: this.boldState})
+      }
+    })
     document.addEventListener('keydown', (event) =>{
-      if(!document.querySelector('#fileEditor')!.classList.contains('disabled')){
+      if(document.querySelector('#fileExplorer')!.classList.contains('disabled') && document.querySelector('.fileElementInput') == null && document.querySelector('.file.active') != null){
         let canAdd = true;
+        if(this.renderedHTML.length == 0){
+          this.renderedHTML.push(new LineElement())
+        }
         if (/^.$/u.test(event.key)) {
-          if (this.markdownString[this.activeIndex] == null) {
-            this.renderedHTML.push(new LineElement());
-            this.markdownString[this.activeIndex] = '';
-          }
+ 
           if (event.key == '*') { 
-            console.log(this.titleState)
             if(!this.titleState){
               if(!this.boldState){
                 this.renderedHTML[this.activeIndex].children[this.activeChildIndex].active = false; // reset active state
@@ -141,13 +154,29 @@ export class TexteditorComponent {
             this.activeIndex++; // increase active line index
             this.markdownString[this.activeIndex] = ''; // setup raw text
           }
-          if(event.key == 'Alt'){
-            console.log(this.markdownString)
-          }
         }
       }
-
     })
+  }
+
+  ngOnChanges(){
+   
+    this.renderedHTML = this.renderedHTMLInput
+    this.markdownString = this.markdownStringInput;
+    // figure out how to do equivalent for these guys
+    if(this.activeChildIndexInput){
+      this.activeChildIndex = this.activeChildIndexInput;
+    }
+    if(this.activeIndexInput){
+      this.activeIndex = this.activeIndexInput;
+    }
+    if(this.titleStateInput){
+      this.titleState = this.titleStateInput;
+    }
+    if(this.boldStateInput){
+      this.boldState = this.boldStateInput;
+    }
+    
   }
   checkState (text: string) {
     if(document.querySelector('span.active')?.classList.contains('bold') && !text.includes('*')){
