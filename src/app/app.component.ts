@@ -11,15 +11,10 @@ import { LineElement } from './data-structures/LineElement';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  md: Array<string>
-  html: LineElement[]
-  activeIndex: number;
-  activeChildIndex: number;
-  titleState: boolean;
-  boldState: boolean;
   visible = "initial"
   title = 'aurum';
   mousePosition: any
+  currentId: string = '';
 
   toggleSidebar() {
     if(this.visible == 'hide'){
@@ -53,30 +48,15 @@ export class AppComponent {
     }
     document.querySelector('#fileExplorer')?.classList.add('disabled')
   }
-  saveStates(event: any){
-    console.log('SAVE STATES')
-    console.log(event)
-  }
   saveFile(event: any){   // SAVE DATA LOCALLY, wait for save states event, and then do saving & loading (maybe loading not necessaryz) ^
-    console.log('SAVING FILE DATA')
-    if(this.md != null && this.md.length != 0 ){
-      window.electronAPI.setMarkdown(event.path, event.id, this.md)
-    }
-    if(this.html != null && this.html.length != 0){
-      window.electronAPI.setJSON(event.path, event.id, this.html)
-    }
+    console.log(event)
+    window.electronAPI.saveFile(event)
   }
-  loadFile(event: any){
-    console.log({loadPath: event.path})
-    let newMD = window.electronAPI.getMarkdown(event.path, event.id)
-    this.md = newMD.split('\n')
-    let newHTML = window.electronAPI.getJSON(event.path, event.id)
-    if(newHTML.length != 0){
-      this.html = JSON.parse(newHTML)
-    }
-    else{
-      this.html = new Array<LineElement>
-    }
+  deleteCurrentHTML(event: any){
+  }
+
+  updateCurrentId(event: string){
+    this.currentId = event
   }
  
 

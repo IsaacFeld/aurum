@@ -33,23 +33,15 @@ declare global { // needed for stuff
 
     move : 
       (currentPath: string, fileId: string, targetId?: string, isFolder?: boolean) => void;
-      
+
     getFilemap :
       () => any;
 
     setFilemap :
       (fileMap: Map<string, FileElement>) => void;
-
-    getMarkdown: 
-      (currentPath: string, fileId: string) => string,
-
-    setMarkdown: 
-      (currentPath: string, fileId: string, md: Array<string>) => void,
-
-    getJSON: 
-      (currentPath: string, fileId: string) => string,
-    setJSON: 
-      (currentPath: string, fileId: string, html: LineElement[]) => void,
+    
+    saveFile :
+      (fileElement: FileElement) => void;
     } 
 
   }
