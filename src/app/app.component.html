@@ -1,8 +1,7 @@
 <link rel="stylesheet" href="app.component.css">
-
 <main class="main" (mousemove)="mouseMove($event)">
-  <sidebar  [mousePosition]="mousePosition" id="fileExplorer" (currentFileDeletedEvent)="deleteCurrentHTML($event)" (fileSelectEvent)="updateCurrentId($event)" (mouseenter)="disableSidebar($event)" [sidebarVisible]=visible class="disabled" ></sidebar>
-  <button (click)="toggleSidebar()" class="close icon"> 
+  <sidebar  [mousePosition]="mousePosition" id="fileExplorer"  [fileSaveEvent]="fileSaveEvent" (fileSelectEvent)="updateCurrentId($event)" (fileDeleteEvent)="textEditorDelete($event)" (fileMoveEvent)="textEditorMove($event)" (fileRenameEvent)="textEditorRename($event)" (mouseenter)="disableSidebar($event)" [sidebarVisible]=visible class="disabled" ></sidebar>
+  <button type="button" (click)="toggleSidebar($event)" class="close icon"> 
     @if(visible == 'show' || visible == 'initial'){
       <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
         <path stroke="#D5C4A1"stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.99994 10 6 11.9999l1.99994 2M11 5v14m-7 0h16c.5523 0 1-.4477 1-1V6c0-.55228-.4477-1-1-1H4c-.55228 0-1 .44772-1 1v12c0 .5523.44772 1 1 1Z"/>
@@ -14,7 +13,7 @@
       </svg>
     }
 </button>
-  <app-texteditor (saveFileEvent)="saveFile($event)" [id]="currentId" id="fileEditor" (mouseenter)="enableSidebar($event)" style="width: 100%;"></app-texteditor>
+  <app-texteditor (saveFileEvent)="saveFile($event)" [id]="currentId" id="fileEditor" (mouseenter)="enableSidebar($event)" style="width: 100%;" [fileEvent]="currentEvent"></app-texteditor>
   
 </main>
 <router-outlet />

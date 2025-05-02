@@ -25,12 +25,14 @@
     border-right: 1px solid var(--color-accent);
 }
 .subline.normal{
+
     min-height: 24px;
     line-height: 1.5;
 }
 .subline.bold{
     font-weight: 700;
 }
+
 .subline.title-1{
     color: var(--color-primary);
     display: block;
@@ -106,8 +108,8 @@
     text-align: center;
 }
 .homepageContainer p{
-    padding: 1.4em;
-    font-size: 1.4em;
+    padding: 1em;
+    font-size: 1.2em;
     font-weight: 500;
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
@@ -117,6 +119,7 @@
     flex-direction: row;
     align-items: center;
     justify-self: center;
+    flex-wrap: wrap;
 }
 .homepageContainer .col{
     display: flex;
@@ -128,7 +131,12 @@
     padding: 0px !important;
     padding-bottom: 1em !important;
 }
-
+.homepageContainer svg{
+    pointer-events: all;
+}
+.homepageContainer svg:hover path{
+    stroke: var(--color-primary)
+}
 /* 4F5165*/
 span.purple{
     background-color: var(--color-background-lighter);
@@ -137,6 +145,11 @@ span.purple{
     padding: 10px;
     margin-left: 0.5em;
     border-radius: 1em;
+    transition: box-shadow 0.5s ease, color 0.5s ease;
+}
+span.purple:hover{
+    color: #fefefe;
+    box-shadow: 6px 6px 40px 24px #623CEA;
 }
 span.blue{
     color: #50D8D7
@@ -147,6 +160,11 @@ span.red{
     border-radius: 1em;
     margin-right: 0.5em;
     padding: 10px;
+    transition: box-shadow 0.5s ease, color 0.5s ease;
+}
+span.red:hover{
+    color: #fefefe;
+    box-shadow: 6px 6px 40px 24px #d11e1e;
 }
 span.logo{
 

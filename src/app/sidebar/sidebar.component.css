@@ -1,5 +1,8 @@
 /* Sidebar */
 .sidebar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-left: 4em;
     width: 400px;
     height: 100%;
@@ -80,7 +83,7 @@
     color: var(--color-primary)
 }
 .abducted{
-    background-color: #FB4834;
+    background-color: #FB4834 !important;
 }
 
 .fileElementInput{
@@ -108,8 +111,6 @@
 .fileElementInputWrapper:has(.fileElementInput:focus-visible){
     background-color: #2F3132;
 }
-
-
 .toolbar{
     display: flex;
     flex-direction: row;

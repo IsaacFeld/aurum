@@ -54,11 +54,8 @@ export class FileService {
         window.electronAPI.setFilemap(this.fileMap)
     }
     queryFolder(folderId: string){
-        console.log(folderId)
             let results = new Array()
             this.fileMap.forEach(function(fileElement) {
-                console.log(folderId)
-                console.log(fileElement.parentId)
                 if(fileElement.parentId == folderId && fileElement.id != folderId){
                     results.push(fileElement)
                 }

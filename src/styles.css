@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+ /* You can add global styles to this file, and also import other style files */
 :root{
     --color-primary: #FCE566;
     --color-primary-dark1: #F8E16E;
@@ -14,12 +13,7 @@
     --color-border: #3C3836;
 
 
-    --t1-size: 1.802em;
-    --t2-size: 1.602em;
-    --t3-size: 1.424em;
-    --t4-size: 1.266em;
-    --t5-size: 1.125em;
-    --t6-size: 1em;
+
 
 
     --t1-line-height: 1.2;
@@ -28,6 +22,15 @@
     --t4-line-height: 1.4;
     --t5-line-height: 1.5;
     --t6-line-height: 1.5;
+}
+.subline{
+    font-size: var(--t6-size);
+    --t1-size: 1.802em;
+    --t2-size: 1.602em;
+    --t3-size: 1.424em;
+    --t4-size: 1.266em;
+    --t5-size: 1.125em;
+    --t6-size: 1em;
 }
 *{
     user-select: none;
@@ -39,6 +42,7 @@ body, html{
     height: 100%;
     margin: 0px;
 }
+
 h1, h2, h3, p{
     margin: 0px;
 
