@@ -17,6 +17,13 @@ const createWindow = () =>{
     win.loadFile('dist/aurum/browser/index.html')
 }
 
+async function getPath(){
+        const sessionPath = app.isPackaged
+        ? newPath = app.getPath('userData')
+        : newPath = __dirname
+        return sessionPath
+}
 app.whenReady().then(() => {
+    ipcMain.handle('sessionPath', getPath)
     createWindow()
 })

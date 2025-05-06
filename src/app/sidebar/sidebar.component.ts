@@ -56,11 +56,14 @@ export class Sidebar{
 
     ngOnChanges(changes: any){
         // Texteditor-specific attribues of fileElements need to be relayed to filemap
-        if(changes.fileSaveEvent.currentValue != null){
-            this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.rHTML = changes.fileSaveEvent.currentValue.rHTML
-            this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.md = changes.fileSaveEvent.currentValue.md
-            this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.states = changes.fileSaveEvent.currentValue.states
+        if(changes.fileSaveEvent){
+            if(changes.fileSaveEvent.currentValue != null){
+                this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.rHTML = changes.fileSaveEvent.currentValue.rHTML
+                this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.md = changes.fileSaveEvent.currentValue.md
+                this.fs.fileMap.get(changes.fileSaveEvent.currentValue.id)!.states = changes.fileSaveEvent.currentValue.states
+            }
         }
+  
     }
     switchFont(event: number){
         let titleArr = ['Miniscule', 'Small', 'Default', 'Big', 'Gigantic']
@@ -93,9 +96,9 @@ export class Sidebar{
             `, s.cssRules.length)
         // Append rule to stylesheet controlling font size variables depending on slider stage
     }
-    ngOnInit(){
+    async ngOnInit(){
         // Read filemap.json and use that as a starting point 
-        let fileMapData = window.electronAPI.getFilemap()
+        let fileMapData = await window.electronAPI.getFilemap()
 
         let fileMap = new Map<string, FileElement>()
         if(fileMapData.length != 0){

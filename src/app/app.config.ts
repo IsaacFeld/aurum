@@ -34,8 +34,8 @@ declare global { // needed for stuff
     move : 
       (currentPath: string, fileId: string, targetId?: string, isFolder?: boolean) => void;
 
-    getFilemap :
-      () => any;
+    getFilemap: 
+      () =>  any;
 
     setFilemap :
       (fileMap: Map<string, FileElement>) => void;

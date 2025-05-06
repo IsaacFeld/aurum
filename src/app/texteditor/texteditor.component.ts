@@ -173,7 +173,7 @@ export class TexteditorComponent {
       }
     })
   }
-  ngOnChanges(changes: any){
+  async ngOnChanges(changes: any){
     // Listen for changes: 
     // IF change is of type fileEvent -> Could be of type Move or Delete -> update paths & parentid for move/ delete entry in map and clear rHTML from screen
     // IF change is of type currentId -> File has been selected, set this.currentFile to selected file to load all data
@@ -217,7 +217,7 @@ export class TexteditorComponent {
 
 
       }
-      let filemapJSON = window.electronAPI.getFilemap()
+      let filemapJSON = await window.electronAPI.getFilemap()
       if(filemapJSON.length != 0){
         let savedFilemap = JSON.parse(filemapJSON)
         for(let i = 0; i < savedFilemap.length; i++){
